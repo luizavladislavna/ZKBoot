@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk>
+	<preference>
+		<name>org.zkoss.zk.ui.WebApp.name</name>
+		<value>ZK-starter</value>
+	</preference>
+	
+	<preference>
+		<name>ThreadLocal</name>
+		<value>
+			org.springframework.web.context.request.RequestContextHolder=requestAttributesHolder,inheritableRequestAttributesHolder;
+			org.springframework.security.context.context.ThreadLocalSecurityContextHolderStrategy=contextHolder
+		</value>
+	</preference>
+
+
+	
+	<library-property>
+		<name>org.zkoss.util.label.web.charset</name>
+		<value>UTF-8</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.util.label.classpath.charset</name>
+        <value>UTF-8</value>
+	</library-property>
+	
+	<device-config>
+		<device-type>ajax</device-type>
+		<timeout-uri></timeout-uri>
+		<automatic-timeout/>
+	</device-config>
+	
+	<client-config>
+		<debug-js>false</debug-js>
+	</client-config>
+
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/applicationContext-security.xml
+		</param-value>
+	</context-param>
+
+	
+	<listener>
+		<description>ThreadLocal Synchronization Listener</description>
+		<listener-class>org.zkoss.zkplus.util.ThreadLocalListener</listener-class>
+	</listener>
+	
+	<system-config>
+		<label-location>/WEB-INF/labels.properties</label-location>
+		<ui-factory-class>org.zkoss.zk.ui.http.SerializableUiFactory</ui-factory-class>
+	</system-config>
+
+	<library-property>
+    	<name>org.zkoss.web.preferred.locale</name>
+    	<value>en</value>
+	</library-property>
+
+</zk>

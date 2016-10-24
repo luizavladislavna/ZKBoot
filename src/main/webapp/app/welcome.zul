@@ -1,0 +1,54 @@
+<zk xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <separator></separator>
+
+    <window title="Window: Static" border="normal">
+        Hello World!
+        <button label="${labels.demo.button.welcome}" onClick='Messagebox.show("Hello World!")'/>
+    </window>
+
+    <separator></separator>
+    <window title="Window: Spring-Service" border="normal" viewModel="@id('vm') @init('com.digi.view.Welcome')">
+        <vlayout>
+            <label value="${labels.demo.title}"/>
+            <button label="${labels.demo.button.welcome}" onClick="@command('sayWelcome')"/>
+            <label value="@load(vm.message)"/>
+            <datebox id="db0" cols="12" format="short " value="@load(vm.date)"/>
+            <timebox id="tb0" cols="12" format="short" value="@load(vm.date)"/>
+        </vlayout>
+    </window>
+
+    <separator></separator>
+    <window title="Window: Buttons" border="normal" viewModel="@id('vm') @init('com.digi.view.Welcome')">
+        <vlayout>
+            <label value="${labels.demo.title}"/>
+            <button label="${labels.demo.button.logout}" mold="os" href="/logout"/>
+        </vlayout>
+    </window>
+
+
+    <separator></separator>
+    <window title="Window: Accounts from DB" border="normal" viewModel="@id('vm') @init('com.digi.view.Welcome')" vflex="true" >
+        <button label="${labels.demo.button.show}" onClick="@command('showList')"/>
+
+    <listbox sclass="employee-list" vflex="true" hflex="1"
+             model="@load(vm.accounts)" selectedItem="@bind(vm.selectedAccount)" >
+        <auxhead>
+            <auxheader colspan="3" class="topic">Contributor List</auxheader>
+        </auxhead>
+        <listhead>
+            <listheader label="Username" align="center" />
+            <listheader label="Role" align="center" />
+            <listheader label="Date" align="center" />
+        </listhead>
+        <template name="model" var="account">
+            <listitem>
+                <listcell label="@load(account.username)" />
+                <listcell label="@load(account.role)" />
+                <listcell label="@load(account.initDate)" />
+            </listitem>
+        </template>
+
+    </listbox>
+    </window>
+
+</zk>
